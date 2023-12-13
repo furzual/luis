@@ -1,0 +1,136 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desarrollo connect</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js" integrity="sha512-E8QSvWZ0eCLGk4km3hxSsNmGWbLtSCSUcewDQPQWZF6pEU8GlT8a5fF32wOl1i8ftdMhssTrF/OhyGWwonTcXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="./index.js"></script>
+</head>
+<body>
+    <body class="container">
+        <nav class="navbar"">
+            <div class="container-fluid d-flex align-items-center justify-content-center">
+            <img src="assets/images/fiserv_logo.png" alt="" width="40" height="40" class="me-2">
+              <span class="navbar-brand mb-0 h1">Connect Tool</span>
+            </div>
+        </nav>
+        <!-- <div class="d-flex align-items-center justify-content-center">
+            <form class="w-50">
+                <div class="form-group m-2">
+                    <label for="urlAction" class="fw-bold">ParamName</label>
+                    <input type="text" class="form-control" id="inputParamName">
+                </div>
+
+                <div class="form-group m-2">
+                    <label for="urlAction" class="fw-bold">ParamValue</label>
+                    <input type="text" class="form-control" id="inputParamValue">
+                    <span class="form-text">
+                        En esta sección podemos agregar parametros adicionales a una venta directa, por ejemplo: oid, [installmentsInterest, numberOfInstallments], assignToken, hosteddataid, [ponumber, recurringInstallmentCount, recurringInstallmentPeriod, recurringInstallmentFrequency, recurringComments], customParam_color
+                    </span>
+                </div>
+                <div class="d-flex align-items-center justify-content-center">
+                    <button class="btn btn-success m-2" id="addParameter" type="button" onclick="addParameter(inputParams,'inputForm')">
+                        Add Parameter
+                    </button>
+                </div>
+            </form>
+        </div> -->
+                <span class="fw-bold ">ParamName</span>
+                <input type="text" class="form-control" id="inputParamName">
+                <span class="fw-bold">ParamValue</span>
+                <input type="text" class="form-control" id="inputParamValue">
+                <span class="form-text">
+                En esta sección podemos agregar parametros adicionales a una venta directa, por ejemplo: oid, [installmentsInterest, numberOfInstallments], assignToken, hosteddataid, [phonumber, recurringInstallmentCount, recurringInstallmentPeriod, recurringInstallmentFrequency, recurringComments], customParam_color
+                </span>
+        <div class="col-12">
+            <button class="btn btn-success" id="addParameter" type="button" onclick="addParameter(inputParams,'inputForm')">Add Parameter</button>
+        </div>
+        <div class="d-flex align-items-center justify-content-center">
+            <form class="w-50 " id="inputForm">
+                <div class="form-group m-2">
+                  <label for="urlAction" class="fw-bold">urlAction</label>
+                  <input type="text" name="urlAction" class="form-control" value="https://test.ipg-online.com/connect/gateway/processing">
+                </div>
+
+                <div class="form-group m-2">
+                  <label for="chargetotal" class="fw-bold">chargetotal</label>
+                  <input type="text" name="chargetotal" class="form-control" value="666.00">
+                </div>
+
+                <div class="form-group m-2">
+                    <label for="chargetotal" class="fw-bold">checkoutoption</label>
+                    <input type="text" name="checkoutoption" class="form-control" value="combinedpage">
+                </div>
+
+                <div class="form-group m-2">
+                    <label for="chargetotal" class="fw-bold">currency</label>
+                    <input type="text" name="currency" class="form-control" value="484">
+                </div>
+
+                <div class="form-group m-2">
+                    <label for="chargetotal" class="fw-bold">hash_algorithm</label>
+                    <input type="text" name="hash_algorithm" class="form-control" value="HMACSHA256">
+                </div>
+
+                <div class="form-group m-2">
+                    <label for="chargetotal" class="fw-bold">responseFailURL</label>
+                    <input type="text" name="responseFailURL" class="form-control" value="https://pagosonline.mx/DConnect/response.php">
+                </div>
+
+                <div class="form-group m-2">
+                    <label for="chargetotal" class="fw-bold">responseSuccessURL</label>
+                    <input type="text" name="responseSuccessURL" class="form-control" value="https://pagosonline.mx/DConnect/response.php">
+                </div>
+
+                <div class="form-group m-2">
+                    <label for="chargetotal" class="fw-bold">storename</label>
+                    <input type="text" name="storename" class="form-control" value="62666666">
+                </div>
+
+                <div class="form-group m-2">
+                    <label for="chargetotal" class="fw-bold">timezone</label>
+                    <input type="text" name="timezone" class="form-control" value="America/Mexico_City">
+                </div>
+
+                <div class="form-group m-2">
+                    <label for="chargetotal" class="fw-bold">txndatetime</label>
+                    <input type="text" name="txndatetime" class="form-control" value="">
+                </div>
+
+                <div class="form-group m-2">
+                    <label for="chargetotal" class="fw-bold">txntype</label>
+                    <input type="text" name="txntype" class="form-control" value="sale">
+                </div>
+
+                <div class="form-group m-2">
+                    <label for="chargetotal" class="fw-bold">sharedSecret</label>
+                    <input type="text" name="sharedSecret" class="form-control" value="i88E-;KYkS">
+                </div>
+              </form>
+        </div>
+        <div class="d-flex align-items-center justify-content-center">
+            <button class="btn btn-primary m-2" id="calculate" onclick="calculateForm(inputParams)" type="button">
+                Calculate form and hash
+            </button>
+        </div>
+  
+        <div class="card m-2">
+            <div class="card-header h4">
+                Results
+            </div>
+            <div class="card-body">
+                <div class="card">
+                    <ul class="list-group list-group-flush">
+                      <li class="list-group-item"> <b>Calculated date-time: </b><span id="dateResult"></span></li>
+                      <li class="list-group-item"> <b>CalculatedString: </b><span id="stringResult"></span></li>
+                      <li class="list-group-item"> <b>Calculated hash: </b><span id="hashResult"></span></li>
+                      <li class="list-group-item"> <b>Base64Hash: </b><span id="b64Result"></span></li>
+                      <li class="list-group-item"> <b>Resulting Form: </b><span id="resultForm"></span></li>
+                    </ul>
+                    <div id="htmlForm" class="d-flex align-items-center justify-content-center"></div>
+                  </div>
+            </div>
+          </div>     
+</body>
+</html>
